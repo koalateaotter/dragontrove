@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DragonTrove — Contact</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background-color: #f9f9f9;
+            color: #333;
+            line-height: 1.7;
+        }
+
+        /* HEADER */
+        header {
+            background-color: #1741AB;
+            color: white;
+            padding: 40px 20px;
+            text-align: center;
+        }
+
+        header img {
+            width: 100px;
+            height: 100px;
+            border-radius: 22px;
+            margin-bottom: 16px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+        }
+
+        header h1 {
+            font-size: 2em;
+            margin-bottom: 4px;
+        }
+
+        header p {
+            font-size: 1em;
+            opacity: 0.85;
+        }
+
+        /* MAIN */
+        main {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px 20px 60px;
+        }
+
+        /* DESCRIPTION */
+        .description {
+            background: white;
+            border-radius: 16px;
+            padding: 32px;
+            margin-bottom: 24px;
+            box-shadow: 0 1px 4px rgba(0,0,0,0.07);
+            font-size: 1.05em;
+            color: #444;
+        }
+
+        .description p {
+            margin-bottom: 14px;
+        }
+
+        .description p:last-child {
+            margin-bottom: 0;
+        }
+
+        .description ul {
+            padding-left: 20px;
+            margin-bottom: 14px;
+        }
+
+        .description ul li {
+            margin-bottom: 6px;
+        }
+
+        /* FORM CARD */
+        .form-card {
+            background: white;
+            border-radius: 16px;
+            padding: 32px;
+            box-shadow: 0 1px 4px rgba(0,0,0,0.07);
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        label {
+            display: block;
+            font-weight: 600;
+            font-size: 0.95em;
+            color: #333;
+            margin-bottom: 6px;
+        }
+
+        label .optional {
+            font-weight: 400;
+            color: #999;
+            font-size: 0.88em;
+            margin-left: 4px;
+        }
+
+        input[type="text"],
+        input[type="email"],
+        select,
+        textarea {
+            width: 100%;
+            padding: 12px 14px;
+            border: 1.5px solid #dde3f0;
+            border-radius: 10px;
+            font-size: 1em;
+            font-family: inherit;
+            color: #333;
+            background: #fafbff;
+            transition: border-color 0.2s, box-shadow 0.2s;
+            appearance: none;
+            -webkit-appearance: none;
+        }
+
+        input[type="text"]:focus,
+        input[type="email"]:focus,
+        select:focus,
+        textarea:focus {
+            outline: none;
+            border-color: #1741AB;
+            box-shadow: 0 0 0 3px rgba(23, 65, 171, 0.1);
+            background: white;
+        }
+
+        .select-wrapper {
+            position: relative;
+        }
+
+        .select-wrapper::after {
+            content: '▾';
+            position: absolute;
+            right: 14px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #1741AB;
+            pointer-events: none;
+            font-size: 1em;
+        }
+
+        select {
+            cursor: pointer;
+        }
+
+        textarea {
+            resize: vertical;
+            min-height: 140px;
+        }
+
+        /* SUBMIT BUTTON */
+        .submit-btn {
+            display: inline-block;
+            background-color: #1741AB;
+            color: white;
+            border: none;
+            padding: 14px 36px;
+            border-radius: 14px;
+            font-size: 1em;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background-color 0.2s;
+            width: 100%;
+            margin-top: 4px;
+        }
+
+        .submit-btn:hover {
+            background-color: #1565C0;
+        }
+
+        .submit-btn:active {
+            background-color: #0d47a1;
+        }
+
+        /* SUCCESS STATE */
+        .success-message {
+            display: none;
+            text-align: center;
+            padding: 40px 20px;
+        }
+
+        .success-message .icon {
+            font-size: 3em;
+            margin-bottom: 16px;
+        }
+
+        .success-message h2 {
+            font-size: 1.4em;
+            color: #1741AB;
+            margin-bottom: 10px;
+        }
+
+        .success-message p {
+            color: #555;
+            font-size: 1em;
+        }
+
+        /* FOOTER */
+        footer {
+            text-align: center;
+            color: #999;
+            font-size: 0.85em;
+            padding: 30px 20px;
+            border-top: 1px solid #eee;
+        }
+
+        footer a {
+            color: #1741AB;
+            text-decoration: none;
+        }
+
+        footer a:hover {
+            text-decoration: underline;
+        }
+
+        footer .links {
+            margin-bottom: 8px;
+        }
+
+        footer .links a {
+            margin: 0 12px;
+        }
+
+        /* RESPONSIVE */
+        @media (max-width: 600px) {
+            header h1 {
+                font-size: 1.8em;
+            }
+
+            header img {
+                width: 80px;
+                height: 80px;
+            }
+
+            .description,
+            .form-card {
+                padding: 24px 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header>
+    <a href="index.html"><img src="dragontrove_app_icon_blue_small.png" alt="DragonTrove App Icon"></a>
+    <a href="index.html"><h1 style="color: white;">DragonTrove</h1></a>
+    <p style="color: white;">Contact</p>
+</header>
+
+<!-- MAIN -->
+<main>
+
+    <!-- DESCRIPTION -->
+    <div class="description">
+        <p>Share Your Thoughts on DragonTrove</p>
+        <p>We'd love to hear from you! Whether you've spotted a bug, have an idea for a new feature, or just want to share some feedback — this is the place.</p>
+        <p>A few tips before you submit:</p>
+        <ul>
+            <li><strong>Bug report?</strong> Include what you were doing when it happened AND what you expected vs. what actually occurred.</li>
+            <li><strong>Feature request?</strong> Describe the problem you're trying to solve.</li>
+            <li><strong>General feedback?</strong> Thank you</li>
+        </ul>
+        <p>Your input helps make DragonTrove better for everyone. Thanks for your time!</p>
+    </div>
+
+    <!-- FORM -->
+    <div class="form-card">
+        <div id="formContainer">
+            <div class="form-group">
+                <label for="type">Type</label>
+                <div class="select-wrapper">
+                    <select id="type" required>
+                        <option value="" disabled selected>Select a type...</option>
+                        <option value="General Feedback">General Feedback</option>
+                        <option value="Feature Request">Feature Request</option>
+                        <option value="Bug Report">Bug Report</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="name">Name <span class="optional">(optional)</span></label>
+                <input type="text" id="name" placeholder="Your name">
+            </div>
+
+            <div class="form-group">
+                <label for="email">Email <span class="optional">(optional)</span></label>
+                <input type="email" id="email" placeholder="your@email.com">
+            </div>
+
+            <div class="form-group">
+                <label for="message">Message</label>
+                <textarea id="message" placeholder="Tell us what's on your mind..." required></textarea>
+            </div>
+
+            <button class="submit-btn" onclick="submitForm()">Send Message</button>
+        </div>
+
+        <div class="success-message" id="successMessage">
+         
+            <h2>Message received!</h2>
+            <p>Thanks for taking the time to reach out. Your feedback helps make DragonTrove better for everyone.</p>
+        </div>
+    </div>
+
+</main>
+
+<!-- FOOTER -->
+<footer>
+    <div class="links">
+        <a href="index.html">Home</a>
+        <a href="privacy.html">Privacy Policy</a>
+        <a href="contact.html">Contact</a>
+    </div>
+    <p>© 2026 DragonTrove. All rights reserved.</p>
+</footer>
+
+<script>
+    function submitForm() {
+        const type = document.getElementById('type').value;
+        const name = document.getElementById('name').value;
+        const email = document.getElementById('email').value;
+        const message = document.getElementById('message').value;
+
+        if (!type) {
+            alert('Please select a type.');
+            return;
+        }
+        if (!message.trim()) {
+            alert('Please enter a message.');
+            return;
+        }
+
+        const formData = new FormData();
+        formData.append('entry.769851017', type);
+        formData.append('entry.1286918837', name);
+        formData.append('entry.1983628941', email);
+        formData.append('entry.1947703458', message);
+
+        fetch('https://docs.google.com/forms/d/e/1FAIpQLSc0P42g8q8elGIoDDsya5qTDsWutcsWaCvDK6XS-cQQXX83aQ/formResponse', {
+            method: 'POST',
+            mode: 'no-cors',
+            body: formData
+        }).then(() => {
+            document.getElementById('formContainer').style.display = 'none';
+            document.getElementById('successMessage').style.display = 'block';
+        }).catch(() => {
+            alert('Something went wrong. Please try again.');
+        });
+    }
+</script>
+
+</body>
+</html>

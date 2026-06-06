@@ -102,11 +102,59 @@
             text-decoration: underline;
         }
 
+        /* DESCRIPTION */
+        .description {
+            background: white;
+            border-radius: 16px;
+            padding: 32px;
+            margin-bottom: 24px;
+            box-shadow: 0 1px 4px rgba(0,0,0,0.07);
+            font-size: 1.05em;
+            color: #444;
+        }
+
+        .description p {
+            margin-bottom: 14px;
+        }
+
+        .description p:last-child {
+            margin-bottom: 0;
+        }
+
+        .description ul {
+            padding-left: 20px;
+            margin-bottom: 14px;
+        }
+
+        .description ul li {
+            margin-bottom: 6px;
+        }
+
+
+        /* FOOTER */
         footer {
             text-align: center;
             color: #999;
             font-size: 0.85em;
-            padding: 20px;
+            padding: 30px 20px;
+            border-top: 1px solid #eee;
+        }
+
+        footer a {
+            color: #1741AB;
+            text-decoration: none;
+        }
+
+        footer a:hover {
+            text-decoration: underline;
+        }
+
+        footer .links {
+            margin-bottom: 8px;
+        }
+
+        footer .links a {
+            margin: 0 12px;
         }
     </style>
 </head>
@@ -123,7 +171,7 @@
 <main>
     <p class="updated">Last updated: June 2026</p>
 
-    
+    <div class="description">
         <h2>Overview</h2>
         <p>DragonTrove is designed with your privacy in mind. We do not collect, sell, or share your personal data with third parties. Your financial data belongs to you.</p>
     
@@ -214,12 +262,18 @@
     
         <h2>Contact</h2>
         <p>DragonTrove's website includes an optional contact form for submitting feedback, bug reports, and feature requests. Any name or email address you provide is submitted voluntarily and used only to respond to your message. This information is not sold, shared with third parties, or used for marketing. If you prefer not to share any personal information, you may leave those fields blank.</p>
-	<p>If you have questions about this privacy policy, please contact us at: <a href="mailto:koalateaotter@gmail.com">KoalaTeaOtter@gmail.com</a></p>
-    
+	<p>If you have questions about this privacy policy, please <a href="contact.html">contact us.</a></p>
+    </div>
 
 </main>
 
+<!-- FOOTER -->
 <footer>
+    <div class="links">
+        <a href="index.html">Home</a>
+        <a href="privacy.html">Privacy Policy</a>
+        <a href="contact.html">Contact</a>
+    </div>
     <p>© 2026 DragonTrove. All rights reserved.</p>
 </footer>
 
