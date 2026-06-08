@@ -1,0 +1,607 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DragonTrove — Help & Tips</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background-color: #f9f9f9;
+            color: #333;
+            line-height: 1.7;
+        }
+
+        /* HEADER */
+        header {
+            background-color: #1741AB;
+            color: white;
+            padding: 40px 20px;
+            text-align: center;
+        }
+
+        header img {
+            width: 100px;
+            height: 100px;
+            border-radius: 22px;
+            margin-bottom: 16px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+        }
+
+        header h1 {
+            font-size: 2em;
+            margin-bottom: 4px;
+        }
+
+        header p {
+            font-size: 1em;
+            opacity: 0.85;
+        }
+
+        /* MAIN */
+        main {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px 20px 60px;
+        }
+
+        /* TABLE OF CONTENTS */
+        .toc {
+            background: white;
+            border-radius: 16px;
+            padding: 28px 32px;
+            margin-bottom: 24px;
+            box-shadow: 0 1px 4px rgba(0,0,0,0.07);
+        }
+
+        .toc h2 {
+            font-size: 1em;
+            font-weight: 700;
+            color: #1741AB;
+            margin-bottom: 14px;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .toc ul {
+            padding-left: 0;
+            list-style: none;
+        }
+
+        .toc ul li {
+            margin-bottom: 6px;
+        }
+
+        .toc a {
+            color: #1741AB;
+            text-decoration: none;
+            font-size: 0.97em;
+            padding-left: 20px;
+            display: inline-block;
+        }
+
+        .toc a:hover {
+            text-decoration: underline;
+        }
+
+        .toc .toc-section {
+            font-weight: 600;
+            margin-top: 10px;
+            margin-bottom: 4px;
+            color: #555;
+            font-size: 0.85em;
+            text-transform: uppercase;
+            letter-spacing: 0.04em;
+        }
+
+        /* SECTION GROUP */
+        .section-group {
+            margin-bottom: 12px;
+        }
+
+        .section-group-title {
+            font-size: 1.1em;
+            font-weight: 700;
+            color: #1741AB;
+            margin-bottom: 10px;
+            margin-top: 28px;
+            padding-left: 4px;
+        }
+
+        /* COLLAPSIBLE ITEMS */
+        .faq-item {
+            background: white;
+            border-radius: 14px;
+            margin-bottom: 8px;
+            box-shadow: 0 1px 4px rgba(0,0,0,0.07);
+            overflow: hidden;
+        }
+
+        .faq-question {
+            width: 100%;
+            background: none;
+            border: none;
+            padding: 18px 24px;
+            text-align: left;
+            font-size: 0.97em;
+            font-weight: 600;
+            color: #333;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 12px;
+            font-family: inherit;
+            transition: background-color 0.15s;
+        }
+
+        .faq-question:hover {
+            background-color: #f4f7ff;
+        }
+
+        .faq-question.open {
+            color: #1741AB;
+        }
+
+        .faq-chevron {
+            flex-shrink: 0;
+            width: 20px;
+            height: 20px;
+            color: #1741AB;
+            transition: transform 0.2s ease;
+        }
+
+        .faq-question.open .faq-chevron {
+            transform: rotate(180deg);
+        }
+
+        .faq-answer {
+            display: none;
+            padding: 0 24px 20px;
+            color: #444;
+            font-size: 0.95em;
+            border-top: 1px solid #f0f4ff;
+        }
+
+        .faq-answer.open {
+            display: block;
+        }
+
+        .faq-answer p {
+            margin-bottom: 10px;
+        }
+
+        .faq-answer p:last-child {
+            margin-bottom: 0;
+        }
+
+        .faq-answer ul, .faq-answer ol {
+            padding-left: 20px;
+            margin-bottom: 10px;
+        }
+
+        .faq-answer ul li, .faq-answer ol li {
+            margin-bottom: 6px;
+        }
+
+        .faq-answer code {
+            background: #f0f4ff;
+            border-radius: 5px;
+            padding: 1px 6px;
+            font-size: 0.92em;
+            color: #1741AB;
+        }
+
+        .faq-answer .tip {
+            background: #f0f4ff;
+            border-left: 3px solid #1741AB;
+            border-radius: 0 8px 8px 0;
+            padding: 10px 14px;
+            margin-top: 10px;
+            font-size: 0.92em;
+            color: #444;
+        }
+
+        .faq-answer .tip strong {
+            color: #1741AB;
+        }
+
+        /* FOOTER */
+        footer {
+            text-align: center;
+            color: #999;
+            font-size: 0.85em;
+            padding: 30px 20px;
+            border-top: 1px solid #eee;
+        }
+
+        footer a {
+            color: #1741AB;
+            text-decoration: none;
+        }
+
+        footer a:hover {
+            text-decoration: underline;
+        }
+
+        footer .links {
+            margin-bottom: 8px;
+        }
+
+        footer .links a {
+            margin: 0 12px;
+        }
+
+        /* RESPONSIVE */
+        @media (max-width: 600px) {
+            header h1 { font-size: 1.8em; }
+            header img { width: 80px; height: 80px; }
+            .toc { padding: 20px; }
+            .faq-question { padding: 16px 18px; }
+            .faq-answer { padding: 0 18px 16px; }
+        }
+    </style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header>
+    <a href="index.html"><img src="dragontrove_app_icon_blue_small.png" alt="DragonTrove App Icon"></a>
+    <a href="index.html"><h1 style="color: white;">DragonTrove</h1></a>
+    <p style="color: white;">Help & Tips</p>
+</header>
+
+<!-- MAIN -->
+<main>
+
+    <!-- TABLE OF CONTENTS -->
+    <div class="toc">
+        <h2>On This Page</h2>
+        <ul>
+            <li class="toc-section">Getting Started</li>
+            <li><a href="#gs-1">Setting up your first budget</a></li>
+            <li><a href="#gs-2">Creating envelopes</a></li>
+            <li><a href="#gs-3">Adding your first transaction</a></li>
+            <li><a href="#gs-4">Using voice entry</a></li>
+
+            <li class="toc-section">Tips & Tricks</li>
+            <li><a href="#tt-1">Budgeting with a partner or family</a></li>
+            <li><a href="#tt-2">Using per-budget themes</a></li>
+            <li><a href="#tt-3">Using per-budget currencies</a></li>
+            <li><a href="#tt-4">Exporting data</a></li>
+	    <li><a href="#tt-5">Importing data</a></li>
+            <li><a href="#tt-6">Adding notes to envelopes and budgets</a></li>
+
+            <li class="toc-section">iCloud Sync Troubleshooting</li>
+            <li><a href="#ic-1">Transactions aren't syncing to another device</a></li>
+            <li><a href="#ic-2">Shared budget isn't appearing for a family member</a></li>
+            <li><a href="#ic-3">Sync seems stuck or slow</a></li>
+            <li><a href="#ic-4">How to reset sync if something goes wrong</a></li>
+
+            <li class="toc-section">General Troubleshooting</li>
+            <li><a href="#tr-1">The app feels slow or unresponsive</a></li>
+            <li><a href="#tr-2">A transaction I deleted came back</a></li>
+            <li><a href="#tr-3">Voice entry isn't working</a></li>
+            <li><a href="#tr-4">My envelope balance looks wrong</a></li>
+            <li><a href="#tr-5">Something else is wrong</a></li>
+        </ul>
+    </div>
+
+    <!-- GETTING STARTED -->
+    <div class="section-group">
+        <div class="section-group-title">Getting Started</div>
+
+        <div class="faq-item" id="gs-1">
+            <button class="faq-question" onclick="toggle(this)">
+                Setting up your first budget
+                <svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+            </button>
+            <div class="faq-answer">
+                <p>When you first open DragonTrove, tap <strong>Create Budget</strong> and give it a name, something like "Family Budget" or "Monthly Spending." You can create multiple budgets for different purposes.</p>
+                <div class="tip"><strong>Tip:</strong> If you share finances with another person, you can share a budget with them via iCloud.</div>
+            </div>
+        </div>
+
+        <div class="faq-item" id="gs-2">
+            <button class="faq-question" onclick="toggle(this)">
+                Creating envelopes
+                <svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+            </button>
+            <div class="faq-answer">
+                <p>Gold piles (envelopes) represent a spending category. Tap <strong>Add Envelope</strong> inside your budget to create one. Common examples: Groceries, Gas, Dining Out, Utilities, Entertainment.</p>
+                <p>Give each envelope a name and a monthly allocation. DragonTrove will track your spending transactions against that amount.</p>
+            </div>
+        </div>
+
+        <div class="faq-item" id="gs-3">
+            <button class="faq-question" onclick="toggle(this)">
+                Adding your first transaction
+                <svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+            </button>
+            <div class="faq-answer">
+                <p>Tap the <strong>+</strong> button to add a transaction. Enter the amount using the keypad without a decimal, typing <code>1500</code> gives you <code>$15.00</code>. Select the envelope it belongs to, add a vendor name, and save.</p>
+                <p>Your envelope balance updates immediately and syncs to any shared devices.</p>
+                <div class="tip"><strong>Tip:</strong> Get in the habit of logging transactions right at the point of purchase, it takes seconds and keeps your hoard accurate.</div>
+            </div>
+        </div>
+
+        <div class="faq-item" id="gs-4">
+            <button class="faq-question" onclick="toggle(this)">
+                Using voice entry
+                <svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+            </button>
+            <div class="faq-answer">
+                <p>Tap the microphone icon and say something like <strong>"$75 at Costco for groceries."</strong> DragonTrove uses the iPhone voice to text to parse the amount, vendor, and category automatically.</p>
+                <p>Voice entry works best when you include all three pieces of information: amount, vendor, and category. You can always edit any field before saving.</p>
+                <div class="tip"><strong>Tip:</strong> If DragonTrove doesn't recognize parts of a voice entry, it will fill out what it can in the add transaction for you to verify and edit.</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- TIPS & TRICKS -->
+    <div class="section-group">
+        <div class="section-group-title">Tips & Tricks</div>
+
+        <div class="faq-item" id="tt-1">
+            <button class="faq-question" onclick="toggle(this)">
+                Budgeting with others
+                <svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+            </button>
+            <div class="faq-answer">
+                <p>DragonTrove supports budget sharing via iCloud. To share a budget, go to  Settings -> Manage Budget -> add people icon. You are able to send others a invite to the budget via iCloud.</p>
+                <p>Once shared, any transaction added will sync to the other devices in real time.</p>
+                <div class="tip"><strong>Tip:</strong> Each person needs to be signed into iCloud on their device for sharing to work.  Settings → Apple ID → iCloud for the smoothest experience.</div>
+            </div>
+        </div>
+
+        <div class="faq-item" id="tt-2">
+            <button class="faq-question" onclick="toggle(this)">
+                Using per-budget themes
+                <svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+            </button>
+            <div class="faq-answer">
+                <p>Each budget can have its own theme - Dragon Hoard or Classic - independent of your global app theme. This is handy if you use multiple budgets for different purposes and want them to feel distinct.</p>
+                <p>To set a per-budget theme, go to Settings -> Manage Budgets -> Budget Settings, and choose a theme override. The app will automatically switch to that theme when you enter the budget.</p>
+            </div>
+        </div>
+
+        <div class="faq-item" id="tt-3">
+            <button class="faq-question" onclick="toggle(this)">
+                Using per-budget currencies
+                <svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+            </button>
+            <div class="faq-answer">
+                <p>If you manage money in more than one currency, for a travel budget or another family member, you can set a currency per budget.</p>
+                <p>To set a per-budget currency, go to Settings -> Manage Budgets -> Budget Settings, and choose a currency override from the full currency picker. All amounts in that budget will display in the chosen currency. DragonTrove displays currencies for tracking purposes only and does not perform live currency conversion.</p>
+                <div class="tip"><strong>Tip:</strong> DragonTrove also supplies fictitious currencies available to add some fun.</div>
+
+            </div>
+        </div>
+
+        <div class="faq-item" id="tt-4">
+            <button class="faq-question" onclick="toggle(this)">
+                Exporting data
+                <svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+            </button>
+            <div class="faq-answer">
+                <p>DragonTrove lets you export your transaction data as a CSV file at any time. Go to Budget Settings and tap <strong>Export Data</strong>. The file will be saved to your Files app where you can share it, open it in Numbers or Excel, or back it up anywhere you like.</p>
+                <p>Your data is always yours — no lock-in, ever.</p>
+            </div>
+        </div>
+	<div class="faq-item" id="tt-5">
+            <button class="faq-question" onclick="toggle(this)">
+                Importing data
+                <svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+            </button>
+            <div class="faq-answer">
+                <p>DragonTrove lets you import a previously exported CSV from DragonTrove as a new budget. Go to Settings -> Manage Budgets -> <strong>Import Budget</strong>. Select the CSV to import from Files.  Rename and share as you need.</p>
+                
+            </div>
+        </div>
+        <div class="faq-item" id="tt-6">
+            <button class="faq-question" onclick="toggle(this)">
+                Adding notes to envelopes and budgets
+                <svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+            </button>
+            <div class="faq-answer">
+                <p>Both envelopes and budgets support a notes field for reminders, context, or anything else you want to remember. For example, you might note that the Groceries envelope includes household supplies, or that a budget is for a specific trip.</p>
+                <p>To add a note, open the envelope or budget settings and look for the Notes field.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- ICLOUD SYNC TROUBLESHOOTING -->
+    <div class="section-group">
+        <div class="section-group-title">iCloud Sync Troubleshooting</div>
+
+        <div class="faq-item" id="ic-1">
+            <button class="faq-question" onclick="toggle(this)">
+                Transactions aren't syncing to another of your devices
+                <svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+            </button>
+            <div class="faq-answer">
+                <p>If a transaction added on one device isn't showing up on another, try the following:</p>
+                <ol>
+                    <li>Make sure both devices are signed into the <strong>same iCloud account</strong>.</li>
+                    <li>Check that iCloud Drive is enabled on both devices: <strong>Settings → Apple ID → iCloud → iCloud Drive</strong>.</li>
+                    <li>Make sure DragonTrove has iCloud access: <strong>Settings → Apple ID → iCloud → Show All</strong> and confirm DragonTrove is toggled on.</li>
+                    <li>Check that both devices have an active internet connection.</li>
+                    <li>Pull to refresh on the budget screen to trigger a manual sync check.</li>
+                </ol>
+                <div class="tip"><strong>Tip:</strong> iCloud sync can occasionally take a few minutes, especially on cellular. Give it a moment before troubleshooting further.</div>
+            </div>
+        </div>
+
+        <div class="faq-item" id="ic-2">
+            <button class="faq-question" onclick="toggle(this)">
+                Shared budget isn't appearing for a family member
+                <svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+            </button>
+            <div class="faq-answer">
+                <p>Budget sharing uses Apple's CloudKit sharing framework. If the shared budget isn't appearing:</p>
+                <ol>
+                    <li>Make sure the invitation was sent to the correct Apple ID.</li>
+                    <li>Ask the other person to check their email or iCloud notifications for a sharing invitation.</li>
+                    <li>Confirm the other person is signed into iCloud on their device.</li>
+                    <li>Try resending the invitation from Settings -> Manage Budgets → Share Budget.</li>
+                </ol>
+                <p>Both parties need to be on a compatible iOS version with iCloud Drive enabled.</p>
+            </div>
+        </div>
+
+        <div class="faq-item" id="ic-3">
+            <button class="faq-question" onclick="toggle(this)">
+                Sync seems stuck or slow
+                <svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+            </button>
+            <div class="faq-answer">
+                <p>iCloud sync speed depends on Apple's servers and your internet connection. If sync feels unusually slow:</p>
+                <ul>
+		    <li>Pull down on the Overview Screen to trigger a sync refresh.</li>
+		    <li>Give it a bit of extra time, sometimes the sync speed can slow down.</li>
+                    <li>Check Apple's System Status page at <a href="https://www.apple.com/support/systemstatus/" target="_blank">apple.com/support/systemstatus</a> to confirm iCloud is operating normally.</li>
+                    <li>Toggle Airplane Mode on and off to refresh your connection.</li>
+                    <li>Restart the app by swiping it away and reopening it.</li>
+                    <li>Restart your device.</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="faq-item" id="ic-4">
+            <button class="faq-question" onclick="toggle(this)">
+                How to reset sync if something goes wrong
+                <svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+            </button>
+            <div class="faq-answer">
+                <p>If sync is behaving unexpectedly, DragonTrove includes a Sync Troubleshooting screen with step-by-step recovery instructions. To find it, go to <strong>Settings → Sync Troubleshooting</strong> inside the app.</p>
+                <p>As a last resort, export a CSV backup of your budget and reset your iCloud data for DragonTrove by going to <strong>Settings → Apple ID → iCloud → Manage Storage → DragonTrove → Delete Data</strong>. Note that this will remove all iCloud-stored data — make sure to export a CSV backup first.</p>
+                <div class="tip"><strong>Tip:</strong> Export a CSV backup before any sync reset so you don't lose transaction history.</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- GENERAL TROUBLESHOOTING -->
+    <div class="section-group">
+        <div class="section-group-title">General Troubleshooting</div>
+
+        <div class="faq-item" id="tr-1">
+            <button class="faq-question" onclick="toggle(this)">
+                The app feels slow or unresponsive
+                <svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+            </button>
+            <div class="faq-answer">
+                <ol>
+                    <li>Close other apps running in the background.</li>
+                    <li>Restart DragonTrove by swiping it away in the app switcher and reopening.</li>
+                    <li>Restart your device.</li>
+                    <li>Make sure you're running the latest version of DragonTrove from the App Store.</li>
+                </ol>
+            </div>
+        </div>
+
+        <div class="faq-item" id="tr-2">
+            <button class="faq-question" onclick="toggle(this)">
+                A transaction I deleted came back
+                <svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+            </button>
+            <div class="faq-answer">
+                <p>This is usually an iCloud sync conflict. If another device or a shared budget partner's device hadn't synced the deletion yet, iCloud may have restored the transaction from the other device's local copy.</p>
+                <p>Make sure all devices on the budget are online and synced before deleting transactions. Deleting again after all devices are in sync should resolve it.</p>
+            </div>
+        </div>
+
+        <div class="faq-item" id="tr-3">
+            <button class="faq-question" onclick="toggle(this)">
+                Voice entry isn't working
+                <svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+            </button>
+            <div class="faq-answer">
+                <p>If the microphone button isn't responding or voice entry isn't parsing correctly:</p>
+                <ul>
+                    <li>Make sure DragonTrove has microphone and speech recognition permission: <strong>Settings → Privacy & Security → Microphone</strong> and <strong>Speech Recognition</strong>.</li>
+                    <li>Speak clearly and include the amount, vendor, and category in your phrase.</li>
+                    <li>Try restarting the app if the microphone button appears unresponsive.</li>
+                </ul>
+                <div class="tip"><strong>Tip:</strong> DragonTrove looks for different keywords to determine what is a store (at, from, to, with, etc) vs a gold pile (for, on, in, towards, etc.) </div>
+            </div>
+        </div>
+
+        <div class="faq-item" id="tr-4">
+            <button class="faq-question" onclick="toggle(this)">
+                My envelope balance looks wrong
+                <svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+            </button>
+            <div class="faq-answer">
+                <p>Open the envelope and review the transaction list to see if anything looks unexpected; a duplicate, a transaction in the wrong envelope, or a sync conflict from another device.</p>
+                <p>If you find a duplicate caused by a sync issue, you can safely delete the extra entry. If the balance still looks off after reviewing all transactions, try restarting the app to force a recalculation.</p>
+            </div>
+        </div>
+
+        <div class="faq-item" id="tr-5">
+            <button class="faq-question" onclick="toggle(this)">
+                Something else is wrong
+                <svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+            </button>
+            <div class="faq-answer">
+                <p>If you're running into something not covered here, we'd love to hear about it. Use the <a href="contact.html">contact form</a> to send us a bug report. Include what you were doing when the issue occurred and what you expected vs. what happened. We read every submission.</p>
+            </div>
+        </div>
+    </div>
+
+</main>
+
+<!-- FOOTER -->
+<footer>
+    <div class="links">
+        <a href="index.html">Home</a>
+	<a href="privacy.html">Privacy Policy</a>
+        <a href="terms.html">Terms of Service</a>
+        <a href="help.html">Help</a>
+	<a href="contact.html">Contact</a>
+    </div>
+    <p>© 2026 DragonTrove. All rights reserved.</p>
+</footer>
+
+<script>
+    function toggle(btn) {
+	    const answer = btn.nextElementSibling;
+	    const isOpen = btn.classList.contains('open');
+
+	    // Close all other open items first
+	    document.querySelectorAll('.faq-question.open').forEach(openBtn => {
+	        if (openBtn !== btn) {
+	            openBtn.classList.remove('open');
+	            openBtn.nextElementSibling.classList.remove('open');
+	        }
+	    });
+	
+	    // Toggle the clicked one
+	    btn.classList.toggle('open', !isOpen);
+	    answer.classList.toggle('open', !isOpen);
+	}
+
+    // Smooth scroll for TOC links
+    document.querySelectorAll('.toc a').forEach(link => {
+        link.addEventListener('click', function(e) {
+            e.preventDefault();
+            const target = document.querySelector(this.getAttribute('href'));
+            if (target) {
+                target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                // Auto-open the item when jumping to it
+                const btn = target.querySelector('.faq-question');
+                if (btn && !btn.classList.contains('open')) {
+                    toggle(btn);
+                }
+            }
+        });
+    });
+</script>
+
+</body>
+</html>
